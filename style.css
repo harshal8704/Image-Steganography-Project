@@ -1,0 +1,237 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #0a0e1a, #0c2b6f, #044ce9);
+  color: #e3eaf3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 16px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Dynamic Cyber Grid Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(10, 14, 26, 0.85), rgba(10, 14, 26, 0.85)),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='%23044ce9' opacity='0.03' d='M30 0h30v30H30z'/%3E%3Cpath fill='%234781f9' opacity='0.05' d='M0 0h30v30H0z'/%3E%3Cpath d='M30 0h2v2h-2z' fill='%234781f9' opacity='0.1'/%3E%3Cpath d='M58 0h2v2h-2z' fill='%234781f9' opacity='0.1'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Optional: Circuit/Cyber Lines Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='1200' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,300 Q150,350 300,300 T600,300 T900,300 T1200,300' stroke='%234781f9' stroke-width='2' fill='none' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 1200px 600px;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: -1;
+  animation: moveCircuit 40s linear infinite;
+}
+
+@keyframes moveCircuit {
+  0% { background-position: 0 0; }
+  100% { background-position: 1200px 600px; }
+}
+
+/* Optional: Scanning Line (Uncomment and add <div class='scan-line'></div> in HTML) */
+/*
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #4781f9, transparent);
+  box-shadow: 0 0 8px #4781f9;
+  animation: scan 4s linear infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+*/
+
+/* Container */
+.container {
+  background: rgba(19, 27, 44, 0.9);
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 
+              inset 0 0 12px rgba(71, 129, 249, 0.2);
+  backdrop-filter: blur(6px);
+  position: relative;
+  z-index: 1;
+  border: 1px solid #4781f9;
+  border-top: 2px solid rgba(71, 129, 249, 0.5);
+}
+
+/* Heading with Shield Icon */
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #4781f9;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #4781f9, transparent);
+}
+
+/* File Input */
+input[type="file"] {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: rgba(227, 234, 243, 0.1);
+  color: #e3eaf3;
+  border: 1px solid #4781f9;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+input[type="file"]:hover, input[type="file"]:focus {
+  background-color: rgba(227, 234, 243, 0.15);
+  border-color: #7aa4ff;
+  box-shadow: 0 0 0 2px rgba(71, 129, 249, 0.3);
+}
+
+/* Textarea */
+textarea {
+  margin-top: 16px;
+  width: 100%;
+  height: 140px;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: rgba(19, 27, 44, 0.5);
+  color: #e3eaf3;
+  border: 1px solid #4781f9;
+  resize: none;
+  transition: all 0.2s;
+}
+textarea:hover, textarea:focus {
+  background: rgba(19, 27, 44, 0.7);
+  border-color: #7aa4ff;
+  box-shadow: 0 0 0 2px rgba(71, 129, 249, 0.3);
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  flex: 1 1 30%;
+  min-width: 120px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background: #044ce9;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+button:hover {
+  background: #0c2b6f;
+  box-shadow: 0 0 12px rgba(71, 129, 249, 0.4);
+}
+button:active {
+  transform: translateY(1px);
+}
+button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  transform: scale(0);
+  transition: transform 0.6s;
+  pointer-events: none;
+}
+button:hover::after {
+  transform: scale(1);
+}
+
+/* Canvas */
+canvas {
+  margin-top: 20px;
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+  background: rgba(19, 27, 44, 0.5);
+  border: 1px solid #4781f9;
+  box-shadow: inset 0 0 8px rgba(71, 129, 249, 0.2);
+}
+
+/* Decoded Message */
+#decodedMessage {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: rgba(71, 129, 249, 0.25);
+  color: #e3eaf3;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid #4781f9;
+  box-shadow: inset 0 0 8px rgba(71, 129, 249, 0.2);
+  position: relative;
+}
+#decodedMessage::before {
+  content: "🔒";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#decodedMessage::after {
+  content: "🔓";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
